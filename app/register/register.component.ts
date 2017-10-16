@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {UserService } from '../_services/index';
+import {UserService } from '../services/index';
 
 @Component({
     moduleId: module.id,
