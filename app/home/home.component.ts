@@ -9,16 +9,26 @@ import { UserService } from '../services/index';
 })
 
 export class HomeComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
+    users: User{} = {};
 
     constructor(private userService: UserService) {
         
     }
 
     ngOnInit() {
-       
+       this.userDetails();
     }
 
-    
+    userDetails(){
+	    this.userService.getLogin()
+		.subscribe(
+		    data => {
+		        this.users=data;
+		        console.log("Data>>>>>",this.users)
+
+		    },
+		    error => {
+		       console.log("Error");
+		    });
+    }
 }

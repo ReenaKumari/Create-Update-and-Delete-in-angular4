@@ -10,8 +10,7 @@ import {UserService } from '../services/index';
 
 export class LoginComponent implements OnInit {
     model: any = {};
-    loading = false;
-    users: User{} = {};
+    users:any;
     message: any;
 
     constructor(
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
                     if(this.users.username == this.model.username && this.users.password == this.model.password){
                        this.router.navigate(['/home']);
                     }else{
-                        this.message = "Invalid UserName Or Password";
+                        this.message = "Invalid Username or Password";
                     }
                 },
                 error => {
