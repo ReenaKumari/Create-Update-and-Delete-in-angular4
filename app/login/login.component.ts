@@ -11,6 +11,8 @@ import {UserService } from '../services/index';
 export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
+    users: User{} = {};
+    message: any;
 
     constructor(
         private route: ActivatedRoute,
@@ -20,5 +22,21 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         
     }
+    login() {
+        this.userService.getLogin()
+            .subscribe(
+                data => {
+                    this.users=data;
+                    if(this.users.username == this.model.username && this.users.password == this.model.password){
+                       this.router.navigate(['/home']);
+                    }else{
+                        this.message = "Invalid UserName Or Password";
+                    }
+                },
+                error => {
+                    this.message = error;
+                });
+    }
+
     
 }

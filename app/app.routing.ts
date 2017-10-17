@@ -5,8 +5,8 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
+    { path: '', component: LoginComponent },
+    { path: 'home', component: HomeComponent },
     { path: 'register', component: RegisterComponent },
 
     // otherwise redirect to home
