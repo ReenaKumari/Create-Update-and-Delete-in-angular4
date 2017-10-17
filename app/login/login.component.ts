@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
     model: any = {};
     users:any;
     message: any;
-    currentUser : any;
+    currentUser : any ;
 
     constructor(
         private route: ActivatedRoute,
@@ -20,27 +20,35 @@ export class LoginComponent implements OnInit {
         private userService: UserService) { }
 
     ngOnInit() {
-       if(this.currentUser != null){
-         this.currentUser = localStorage.getItem("userData"); 
+       //if(this.currentUser != null){
+         this.currentUser = JSON.parse(localStorage.getItem('userData')); 
          console.log("CurrentData>>>>>",this.currentUser);
-       }
+       //}
        
     }
     login() {
-
-        this.userService.getLogin()
-            .subscribe(
-                data => {
-                    this.users=data;
-                    if(this.users.username == this.model.username && this.users.password == this.model.password){
-                       this.router.navigate(['/home']);
-                    }else{
-                        this.message = "Invalid Username or Password";
+        if(this.currentUser){
+          if(this.currentUser.username == this.model.username && this.currentUser.password == this.model.password){
+               this.router.navigate(['/home']);
+            }else{
+                this.message = "Invalid Username or Password";
+            }
+        }else{
+            this.userService.getLogin()
+                .subscribe(
+                    data => {
+                        this.users=data;
+                        if(this.users.username == this.model.username && this.users.password == this.model.password){
+                           this.router.navigate(['/home']);
+                        }else{
+                            this.message = "Invalid Username or Password";
+                        }
+                    },
+                    error => {
+                        this.message = error;
                     }
-                },
-                error => {
-                    this.message = error;
-                });
+                );
+        }
     }
 
     
