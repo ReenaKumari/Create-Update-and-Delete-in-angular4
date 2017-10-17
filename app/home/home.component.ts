@@ -9,7 +9,7 @@ import { UserService } from '../services/index';
 })
 
 export class HomeComponent implements OnInit {
-    users: User{} = {};
+    users: any = {};
 
     constructor(private userService: UserService) {
         
