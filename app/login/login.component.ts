@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
     model: any = {};
     users:any;
     message: any;
+    currentUser : any;
 
     constructor(
         private route: ActivatedRoute,
@@ -19,9 +20,14 @@ export class LoginComponent implements OnInit {
         private userService: UserService) { }
 
     ngOnInit() {
-        
+       if(this.currentUser != null){
+         this.currentUser = localStorage.getItem("userData"); 
+         console.log("CurrentData>>>>>",this.currentUser);
+       }
+       
     }
     login() {
+
         this.userService.getLogin()
             .subscribe(
                 data => {
