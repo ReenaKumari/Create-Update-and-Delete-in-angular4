@@ -20,10 +20,7 @@ export class LoginComponent implements OnInit {
         private userService: UserService) { }
 
     ngOnInit() {
-       //if(this.currentUser != null){
          this.currentUser = JSON.parse(localStorage.getItem('userData')); 
-         console.log("CurrentData>>>>>",this.currentUser);
-       //}
        
     }
     login() {

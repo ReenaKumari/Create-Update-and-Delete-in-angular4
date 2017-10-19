@@ -22,7 +22,6 @@ export class RegisterComponent {
        this.user.lastName = this.model.lastName;
        this.user.username = this.model.username;
        this.user.password = this.model.password;
-       console.log("Data>>>>>",this.user);
        localStorage.setItem("userData", JSON.stringify(this.user));
        this.router.navigate(['/login']);
     }
