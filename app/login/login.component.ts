@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     login() {
         if(this.currentUser){
           if(this.currentUser.username == this.model.username && this.currentUser.password == this.model.password){
-               this.router.navigate(['/home']);
+               this.router.navigate(['/article']);
             }else{
                 this.message = "Invalid Username or Password";
             }
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                     data => {
                         this.users=data;
                         if(this.users.username == this.model.username && this.users.password == this.model.password){
-                           this.router.navigate(['/home']);
+                           this.router.navigate(['/article']);
                         }else{
                             this.message = "Invalid Username or Password";
                         }
