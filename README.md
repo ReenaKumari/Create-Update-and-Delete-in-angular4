@@ -8,7 +8,9 @@ json-server is fake REST API to test applications. It is very easy to install an
 
 Step-1: Open the command prompt and run the following command.
 
-npm install -g json-server Now we are ready with json-server . 
+npm install -g json-server 
+
+Now we are ready with json-server . 
 
 Step-2: Create a db.json file in a directory. In our demo we will perform operations on articles with three fields that are id, title and category. 
 
