@@ -10,6 +10,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ArticleComponent }  from './articles/index';
 import { ArticleService } from './articles/index';
+import { LoginService } from './login/index';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { ArticleService } from './articles/index';
     ],
     providers: [
         UserService,
-        ArticleService
+        ArticleService,
+        LoginService
     ],
     bootstrap: [AppComponent]
 })

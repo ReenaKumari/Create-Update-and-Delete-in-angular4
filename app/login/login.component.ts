@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import {UserService } from '../services/index';
+import { LoginService } from './login.service';
+import { Login } from './login';
 
 @Component({
     moduleId: module.id,
@@ -12,29 +12,22 @@ export class LoginComponent implements OnInit {
     model: any = {};
     users:any;
     message: any;
-    currentUser : any ;
+    //currentUser : any ;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private userService: UserService) { }
+        private loginService: LoginService,) { }
 
     ngOnInit() {
-         this.currentUser = JSON.parse(localStorage.getItem('userData')); 
+         //this.currentUser = JSON.parse(localStorage.getItem('userData')); 
        
     }
     login() {
-        if(this.currentUser){
-          if(this.currentUser.username == this.model.username && this.currentUser.password == this.model.password){
-               this.router.navigate(['/article']);
-            }else{
-                this.message = "Invalid Username or Password";
-            }
-        }else{
-            this.userService.getLogin()
+            this.loginService.getUserByName(this.model.username)
                 .subscribe(
                     data => {
-                        this.users=data;
+                        this.users=data[0];
                         if(this.users.username == this.model.username && this.users.password == this.model.password){
                            this.router.navigate(['/article']);
                         }else{
@@ -45,7 +38,6 @@ export class LoginComponent implements OnInit {
                         this.message = error;
                     }
                 );
-        }
     }
 
     

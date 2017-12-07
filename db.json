@@ -1,9 +1,19 @@
 {
-  "articles": [
+  "articles": [],
+  "logins": [
     {
-      "title": "asd",
-      "category": "asd",
-      "id": 4
+      "id": 1,
+      "firstname": "abc",
+      "lastname": "abc",
+      "username": "admin",
+      "password": "admin123"
+    },
+    {
+      "firstname": "abcd",
+      "lastname": "abcd",
+      "username": "abcd",
+      "password": "abcd",
+      "id": 2
     }
   ]
 }

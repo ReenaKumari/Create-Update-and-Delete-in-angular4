@@ -94,6 +94,9 @@ export class ArticleComponent implements OnInit {
           },
             errorCode => this.statusCode = errorCode);    
    }
+   logout(){
+    this.router.navigate(['/login']);
+   }
    preProcessConfigurations() {
       this.statusCode = null;
       this.requestProcessing = "true";   

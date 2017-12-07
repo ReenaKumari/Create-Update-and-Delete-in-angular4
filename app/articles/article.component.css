@@ -31,3 +31,6 @@ button {
     color: green;
     font-size: 20px;
 }
+.logOut{
+    float:right;
+}
