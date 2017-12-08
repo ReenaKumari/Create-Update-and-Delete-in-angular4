@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
                 .subscribe(
                     data => {
                         this.users=data[0];
-                        if(this.users.username == this.model.username && this.users.password == this.model.password){
+                        if(this.users && this.users.username == this.model.username && this.users.password == this.model.password){
                         localStorage.setItem('UserName',this.model.username);
-                           this.router.navigate(['/article']);
+                        this.router.navigate(['/article']);
                         }else{
                             this.message = "Invalid Username or Password";
                         }
