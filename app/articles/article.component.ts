@@ -12,10 +12,10 @@ import { Article } from './article';
 export class ArticleComponent implements OnInit { 
    allArticles: Article[];
    statusCode: any;
-   requestProcessing : string = "false";
    articleIdToUpdate : any = null;
    processValidation : string = "false";
    articleForm: any;
+   currentUser:any;
    
    constructor(private route: ActivatedRoute,
         private router: Router,
@@ -27,10 +27,11 @@ export class ArticleComponent implements OnInit {
          });
    }
    ngOnInit(): void {
-	   this.getAllArticles();
+     this.currentUser = localStorage.getItem('UserName');
+	   this.getAllArticlesByUser();
    } 
-   getAllArticles() {
-      this.articleService.getAllArticles()
+   getAllArticlesByUser() {
+      this.articleService.getAllArticlesByUser(this.currentUser)
 		  .subscribe(
           data => this.allArticles = data,
           errorCode =>  this.statusCode = errorCode
@@ -50,21 +51,23 @@ export class ArticleComponent implements OnInit {
        let articleWithMaxIndex = articles[maxIndex];
        let articleId = articleWithMaxIndex.id + 1;
        article.id = articleId;
+       article.username = localStorage.getItem('UserName');
          this.articleService.createArticle(article)
         .subscribe(successCode => {
           this.statusCode = successCode;
-          this.getAllArticles();  
+          this.getAllArticlesByUser();  
           this.backToCreateArticle();
          },
          errorCode => this.statusCode = errorCode
          );
      });    
     } else { 
-        article.id = this.articleIdToUpdate;    
+        article.id = this.articleIdToUpdate;
+        article.username = localStorage.getItem('UserName');    
       this.articleService.updateArticle(article)
         .subscribe(successCode => {
           this.statusCode = successCode;
-          this.getAllArticles();  
+          this.getAllArticlesByUser();  
           this.backToCreateArticle();
         },
         errorCode => this.statusCode = errorCode);    
@@ -76,8 +79,7 @@ export class ArticleComponent implements OnInit {
         .subscribe(article => {
                 this.articleIdToUpdate = article.id;   
                 this.articleForm.setValue({ title: article.title, category: article.category });
-          this.processValidation = "true";
-          this.requestProcessing = "false";   
+          this.processValidation = "true";  
             },
             errorCode =>  this.statusCode = errorCode);   
    }
@@ -89,17 +91,17 @@ export class ArticleComponent implements OnInit {
                 //this.statusCode = successCode;
           //Expecting success code 204 from server
           this.statusCode = 204;
-            this.getAllArticles();  
+            this.getAllArticlesByUser();  
             this.backToCreateArticle();
           },
             errorCode => this.statusCode = errorCode);    
    }
    logout(){
+    localStorage.removeItem('UserName');
     this.router.navigate(['/login']);
    }
    preProcessConfigurations() {
-      this.statusCode = null;
-      this.requestProcessing = "true";   
+      this.statusCode = null;  
    }
    backToCreateArticle() {
       this.articleIdToUpdate = null;

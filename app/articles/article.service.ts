@@ -15,6 +15,9 @@ export class ArticleService {
     getAllArticles(){
       return this.http.get(this.articleUrl).map((response: Response) => response.json());
     }
+    getAllArticlesByUser(username: string){
+      return this.http.get(this.articleUrl+"?username="+ username).map((response: Response) => response.json());
+    }
 	createArticle(article: Article):Observable<number> {
 	    let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });

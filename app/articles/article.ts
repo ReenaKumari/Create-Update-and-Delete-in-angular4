@@ -1,4 +1,4 @@
 export class Article {
-   constructor(public id: number, public title: string, public category: string) { 
+   constructor(public id: number, public title: string, public category: string,public username: string) { 
    }
 } 

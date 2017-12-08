@@ -1,18 +1,43 @@
 {
-  "articles": [],
-  "logins": [
+  "articles": [
     {
-      "id": 1,
-      "firstname": "abc",
-      "lastname": "abc",
-      "username": "admin",
-      "password": "admin123"
+      "title": "testing1213",
+      "category": "testingdata113",
+      "id": 3,
+      "username": "karthick"
     },
     {
-      "firstname": "abcd",
-      "lastname": "abcd",
-      "username": "abcd",
-      "password": "abcd",
+      "title": "testing123",
+      "category": "testingdata1213",
+      "id": 1,
+      "username": "aditya"
+    },
+    {
+      "title": "testing",
+      "category": "testing",
+      "id": 2,
+      "username": "aditya"
+    },
+    {
+      "title": "sadqw",
+      "category": "sadqw",
+      "id": 4,
+      "username": "karthick"
+    }
+  ],
+  "logins": [
+    {
+      "firstname": "aditya",
+      "lastname": "aditya",
+      "username": "aditya",
+      "password": "aditya",
+      "id": 1
+    },
+    {
+      "firstname": "karthick",
+      "lastname": "karthick",
+      "username": "karthick",
+      "password": "karthick",
       "id": 2
     }
   ]

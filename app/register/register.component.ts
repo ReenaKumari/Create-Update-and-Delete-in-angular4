@@ -39,8 +39,9 @@ export class RegisterComponent {
       this.loginService.getAllUsers()
        .subscribe(logins => {
        let maxIndex = logins.length - 1;
-       let loginWithMaxIndex = logins[maxIndex];
-       let loginId = loginWithMaxIndex.id + 1;
+       let loginWithMaxIndex = logins[maxIndex];       
+        let loginId = loginWithMaxIndex.id + 1;
+       
        login.id = loginId;
          this.loginService.createLogin(login)
         .subscribe(successCode => {
