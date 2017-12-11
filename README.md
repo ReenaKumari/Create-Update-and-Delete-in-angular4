@@ -1,6 +1,6 @@
 Steps for Running the application:
 
-git clone https://github.com/nagaaditya/Create-Update-and-Delete-in-angular4.git
+git clone https://github.com/aditya2905/Create-Update-and-Delete-in-angular4.git
 
 npm install
 
