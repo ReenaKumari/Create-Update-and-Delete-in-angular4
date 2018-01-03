@@ -41,18 +41,29 @@ export class RegisterComponent {
        let maxIndex = logins.length - 1;
        let loginWithMaxIndex = logins[maxIndex];       
         let loginId = loginWithMaxIndex.id + 1;
-       
-       login.id = loginId;
-         this.loginService.createLogin(login)
-        .subscribe(successCode => {
-          this.statusCode = successCode;
-          this.router.navigate(['/login']);
-         },
-         errorCode => this.statusCode = errorCode
-         );
+        this.loginService.getUserByName(login.username)
+        .subscribe(
+            data => {
+                this.users=data[0];
+                if(data[0] && this.users.username == login.username){
+                  this.statusCode = "Username Already Exists";
+               }else {
+                 login.id = loginId;
+                 this.loginService.createLogin(login)
+                .subscribe(successCode => {
+                  this.statusCode = successCode;
+                  this.router.navigate(['/login']);
+                 },
+                 errorCode => this.statusCode = errorCode
+                 );
+                 
+               }
+            },
+            error => {
+                this.statusCode = error;
+            }
+        );
      });
-       
-       
     }
     preProcessConfigurations() {
       this.statusCode = null;
