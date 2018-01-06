@@ -16,6 +16,7 @@ export class RegisterComponent {
     requestProcessing : string = "false";
     processValidation : string = "false";
     registerForm: any;
+    users:any;
 
     constructor(
         private router: Router,
